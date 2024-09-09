@@ -57,9 +57,9 @@
                 {% endfor %}
             </div>
             <div class="col-9 ms-3 colCategorie">
-                <div class="row mt-2 justify-content-between">
-                    <div class="col"><h2 class="text-light">Bonjour, Ibrahima</h2></div>
-                    <div class="col align-items-end">
+                <div class="row mt-2 justify-content-between d-flex">
+                    <div class="col-9"><h2 class="text-light">Bonjour, Ibrahima</h2></div>
+                    <div class="col  d-flex align-items-end">
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
                             <button type='submit' class="btn btn-outline-light">Se deconnecter</button>

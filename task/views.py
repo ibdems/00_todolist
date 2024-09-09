@@ -55,23 +55,11 @@ def registration (request):
      
     return render(request, 'registration.html', {'form': form})
 
-def taskCategorie(request, pk):
-    categories = Categorie.objects.all()
-    categorie = Categorie.objects.get(pk=pk)
-    tasks = Task.objects.filter(categorie=categorie).order_by('-start_date')
-    context = {'tasks': tasks, 'categories': categories}
-    return render(request, 'index.html', context)
-@login_required(login_url='/signin/')
-def index(request):
-    categories = Categorie.objects.all()
-    formCategory = CategorieForm()
-    formTask = TaskForm()
-
+def trie(request, tasks):
     filter_date = request.GET.get('date')
     priority_task = request.GET.get('priority')
     status_task = request.GET.get('status')
     today = timezone.now().date()
-    tasks = Task.objects.all()
 
     if filter_date:
         if filter_date == 'today':
@@ -89,18 +77,41 @@ def index(request):
             tasks = tasks.filter(status=True)
         elif status_task == 'nontermine':
             tasks = tasks.filter(status=False)
-    
-    tasks.order_by('status')
 
+    return tasks
+
+def taskCategorie(request, pk):
+    categories = Categorie.objects.all()
+    categorie = Categorie.objects.get(pk=pk)
+    tasks = Task.objects.filter(categorie=categorie).order_by('-start_date')  
+
+    tasks = trie(request, tasks)
+    context = {
+        'tasks': tasks,
+        'categories': categories,
+        'today': timezone.now().date(),
+    }
+    
+    return render(request, 'index.html', context)   
+
+@login_required(login_url='/signin/')
+def index(request):
+    categories = Categorie.objects.all()
+    formCategory = CategorieForm()
+    formTask = TaskForm()
+    tasks = Task.objects.all()
+
+    tasks = trie(request, tasks)
     context = {
         'categories': categories,
         'formCategory': formCategory,
         'formTask': formTask, 
         'tasks': tasks,
-        'today': today,
+        'today': timezone.now().date
     }
         
     return render(request, 'index.html', context)
+
 
 def addCategory(request):
     if request.method == 'POST':
