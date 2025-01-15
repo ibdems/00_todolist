@@ -6,13 +6,13 @@ Un projet de gestion de tache fait avec Django
 - **Inscription et deconnexion** : Pour l'utiliser l'application l'utilisateur doit s'inscrire ou se connecter
 
 - **Ajouter des categories** : Les utilisateurs peut ajouter des categories via un modal et voir la liste des categories sous forme de Menu a gauche
-![Ajout categorie](static/img/addcategorie.png)
+![Ajout categorie](task/static/img/addcategorie.png)
 
 - **Ajouter des taches** : Les utilisateurs peut ajouter des taches via un modal en cliquant sur le bouton ajouter
-![Ajout des taches](static/img/addtache.png)
+![Ajout des taches](task/static/img/addtache.png)
 
 - **Gerer les taches** : Ils peuvent voir toutes les taches, achever les taches, filtrer par categorie, par priorite, par moment, filtrer par status
-![ taches](static/img/generale.png)
+![ taches](task/static/img/generale.png)
 
 ## Fonctionnalitées a venir
 - **Gerer la responsivité**
