@@ -73,7 +73,7 @@
                 <div class="row container d-flex align-items-center my-2">
                     <div class="row d-flex align-items-end mb-3 justify-content-end">
                         <form method="get" class="row">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <select name="priority" class="form-select btn-outline-dark" onchange="this.form.submit()">
                                     <option value="">Filtrer par priorite</option>
                                     <option value="basse" {% if request.GET.priority == 'basse' %}selected{% endif %}>Basse</option>
@@ -82,7 +82,7 @@
                                     <option value="maximale" {% if request.GET.priority == 'maximale' %}selected{% endif %}>Maximale</option>
                                 </select>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <select name="date" class="form-select btn-outline-dark" onchange="this.form.submit()">
                                     <option value="">Filtrer par moment</option>
                                     <option value="today" {% if request.GET.date == 'today' %}selected{% endif %}>Aujourd'hui</option>
@@ -90,7 +90,7 @@
                                     <option value="passe" {% if request.GET.date == 'passe' %}selected{% endif %}>Passé</option>
                                 </select>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <select name="status" class="form-select btn-outline-dark" onchange="this.form.submit()">
                                     <option value="">Filtrer par status</option>
                                     <option value="termine" {% if request.GET.status == 'termine' %}selected{% endif %}>Terminé</option>
